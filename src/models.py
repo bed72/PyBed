@@ -39,12 +39,4 @@ class Tweet(BaseModel):
         table_name = "tweets"
 
 
-class Favorite(BaseModel):
-    user = ForeignKeyField(User, backref="favorites")
-    tweet = ForeignKeyField(Tweet, backref="favorites")
-
-    class Meta:
-        table_name = "favorites"
-
-
-database.create_tables([User, Tweet, Favorite])
+database.create_tables([User, Tweet])
