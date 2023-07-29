@@ -1,7 +1,9 @@
 from typing import List
 import uuid
 
-from models import User, Tweet
+from strawberry.file_uploads import Upload
+
+from .models import User, Tweet
 
 
 def get_users() -> List[User]:
@@ -10,6 +12,10 @@ def get_users() -> List[User]:
 
 def get_tweets() -> List[Tweet]:
     return Tweet.select()
+
+
+def handler_file(file: Upload) -> str:
+    return bytes(file.read()).decode("utf-8")
 
 
 def create_user(username: str) -> User:

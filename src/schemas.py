@@ -2,9 +2,15 @@ from typing import List
 import uuid
 
 import strawberry
+from strawberry.file_uploads import Upload
 from strawberry.sanic.views import GraphQLView
 
-from database import get_users, get_tweets, create_user, create_tweet
+from .database import get_users, get_tweets, handler_file, create_user, create_tweet
+
+
+@strawberry.input
+class FolderInput:
+    files: List[Upload]
 
 
 @strawberry.type
@@ -37,6 +43,11 @@ class Query:
 
 @strawberry.type
 class Mutation:
+    file: str = strawberry.field(
+        resolver=handler_file,
+        name="handler_file",
+        description="Handler a new File",
+    )
     create_user: User = strawberry.field(
         resolver=create_user,
         name="create_user",
