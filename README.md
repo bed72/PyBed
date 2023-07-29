@@ -9,5 +9,5 @@ Este é um projeto Python que utiliza a tecnologia GraphQL para implementar uma 
 2. Clone este repositório em sua máquina local:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+git https://github.com/bed72/PyBed
+```
